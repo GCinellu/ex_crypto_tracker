@@ -15,7 +15,6 @@ Ready to run in production? Please [check our deployment guides](https://hexdocs
 - [x] Implemented a mocked price fetcher for development
 - [x] Created `CryptoTracker.Fetcher` to fetch live prices from CoinMarketCap API
 - [x] Added environment variable support for API key via `.env` files
-- [x] Configured `runtime.exs` to load env variables in production
 - [x] Implemented a `PriceTracker` GenServer per coin
 - [x] Introduced `CoinTrackerSupervisor` (DynamicSupervisor) to manage coin processes
 - [x] Set up `Registry` to uniquely identify each coin GenServer
@@ -27,9 +26,9 @@ Ready to run in production? Please [check our deployment guides](https://hexdocs
 - [ ] Add retry/backoff logic for API failures to prevent temporary outages from crashing the GenServer
 - [ ] Decouple fetching from database writes for better fault tolerance
 - [ ] Introduce telemetry events to track fetch success, latency, and errors
-- [ ] Consider an in-memory cache (ETS or `:persistent_term`) for fast price reads
+- [ ] Configure an in-memory cache (ETS or `:persistent_term`) for fast price reads
 - [ ] Enable dynamic addition of new coins at runtime
 - [ ] Implement global rate limiting to respect CoinMarketCap API quotas
 - [ ] Create a mock/stub Fetcher for tests to avoid hitting the real API
-- [ ] Optional: add logging/alerts for repeated GenServer crashes or failed fetches
+- [ ] Add logging/alerts for repeated GenServer crashes or failed fetches
 
