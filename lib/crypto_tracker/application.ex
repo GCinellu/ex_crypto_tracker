@@ -13,7 +13,7 @@ defmodule CryptoTracker.Application do
       {DNSCluster, query: Application.get_env(:crypto_tracker, :dns_cluster_query) || :ignore},
       {Phoenix.PubSub, name: CryptoTracker.PubSub},
       # Start the Finch HTTP client for sending emails
-      {Finch, name: CryptoTracker.Finch},
+      {Finch, name: CryptoTrackerFinch},
       # Start a worker by calling: CryptoTracker.Worker.start_link(arg)
       # {CryptoTracker.Worker, arg},
       # Start to serve requests, typically the last entry
