@@ -19,7 +19,8 @@ defmodule CryptoTracker.Application do
       # Start to serve requests, typically the last entry
       CryptoTrackerWeb.Endpoint,
       # {CryptoTracker.PriceTracker, [:btc, :eth]}
-      CryptoTracker.CoinTrackerSupervisor
+      {Registry, keys: :unique, name: CryptoTracker.Registry},
+      CryptoTracker.CoinTrackerSupervisor,
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html
