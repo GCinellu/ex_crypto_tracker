@@ -18,13 +18,19 @@ defmodule CryptoTracker.Application do
       # {CryptoTracker.Worker, arg},
       # Start to serve requests, typically the last entry
       CryptoTrackerWeb.Endpoint,
-      {CryptoTracker.PriceTracker, [:btc, :eth]}
+      # {CryptoTracker.PriceTracker, [:btc, :eth]}
+      CryptoTracker.CoinTrackerSupervisor
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html
     # for other strategies and supported options
     opts = [strategy: :one_for_one, name: CryptoTracker.Supervisor]
-    Supervisor.start_link(children, opts)
+    {:ok, pid} = Supervisor.start_link(children, opts)
+
+    [:btc, :eth]
+    |> Enum.each(&CryptoTracker.CoinTrackerSupervisor.start_coin(&1))
+
+    {:ok, pid}
   end
 
   # Tell Phoenix to update the endpoint configuration
