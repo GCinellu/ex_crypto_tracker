@@ -2,7 +2,7 @@ defmodule CryptoTracker.PriceTracker do
   use GenServer
   alias CryptoTracker.{Ecto, Repo}
 
-  @update_interval :timer.seconds(10)
+  @update_interval :timer.seconds(60)
 
   def start_link(coins) do
     GenServer.start_link(__MODULE__, coins, name: __MODULE__)
